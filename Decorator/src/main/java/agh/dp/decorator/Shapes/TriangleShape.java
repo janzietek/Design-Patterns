@@ -1,7 +1,6 @@
-package agh.dp.decorator;
+package agh.dp.decorator.Shapes;
 
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
 public class TriangleShape implements BaseShape {

@@ -1,5 +1,6 @@
 package agh.dp.decorator;
 
+import agh.dp.decorator.GUI.GUIController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

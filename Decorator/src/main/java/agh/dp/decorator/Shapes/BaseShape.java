@@ -1,4 +1,4 @@
-package agh.dp.decorator;
+package agh.dp.decorator.Shapes;
 
 import javafx.scene.shape.Shape;
 

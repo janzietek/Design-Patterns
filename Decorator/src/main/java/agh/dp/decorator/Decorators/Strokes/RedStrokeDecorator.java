@@ -1,9 +1,11 @@
-package agh.dp.decorator;
+package agh.dp.decorator.Decorators.Strokes;
 
+import agh.dp.decorator.Decorators.BaseDecorator;
+import agh.dp.decorator.Shapes.BaseShape;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
-public class RedStrokeDecorator extends BaseDecorator{
+public class RedStrokeDecorator extends BaseDecorator {
     public RedStrokeDecorator(BaseShape originalShape) {
         this.baseShape = originalShape;
         decorate();

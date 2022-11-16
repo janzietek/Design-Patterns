@@ -1,5 +1,15 @@
-package agh.dp.decorator;
+package agh.dp.decorator.GUI;
 
+import agh.dp.decorator.Decorators.Colors.BlueFillDecorator;
+import agh.dp.decorator.Decorators.Colors.GreenFillDecorator;
+import agh.dp.decorator.Decorators.Colors.RedFillDecorator;
+import agh.dp.decorator.Decorators.Strokes.BlueStrokeDecorator;
+import agh.dp.decorator.Decorators.Strokes.GreenStrokeDecorator;
+import agh.dp.decorator.Decorators.Strokes.RedStrokeDecorator;
+import agh.dp.decorator.Shapes.BaseShape;
+import agh.dp.decorator.Shapes.CircleShape;
+import agh.dp.decorator.Shapes.RectangleShape;
+import agh.dp.decorator.Shapes.TriangleShape;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -11,7 +21,7 @@ public class GUIController extends AnchorPane {
 
     public GUIController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-                "decorator_view.fxml"));
+                "/agh/dp/decorator/decorator_view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

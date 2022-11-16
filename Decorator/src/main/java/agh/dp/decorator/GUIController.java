@@ -49,31 +49,37 @@ public class GUIController extends AnchorPane {
 
     @FXML
     protected void FillRed() {
-        _shape = new RedFillDecorator(_shape);
+        if (_shape != null)
+            _shape = new RedFillDecorator(_shape);
     }
 
     @FXML
     protected void FillBlue() {
-        _shape = new BlueFillDecorator(_shape);
+        if (_shape != null)
+            _shape = new BlueFillDecorator(_shape);
     }
 
     @FXML
     protected void FillGreen() {
-        _shape = new GreenFillDecorator(_shape);
+        if (_shape != null)
+            _shape = new GreenFillDecorator(_shape);
     }
 
     @FXML
     protected void StrokeRed() {
-        _shape = new RedStrokeDecorator(_shape);
+        if (_shape != null)
+            _shape = new RedStrokeDecorator(_shape);
     }
 
     @FXML
     protected void StrokeBlue() {
-        _shape = new BlueStrokeDecorator(_shape);
+        if (_shape != null)
+            _shape = new BlueStrokeDecorator(_shape);
     }
 
     @FXML
     protected void StrokeGreen() {
-        _shape = new GreenStrokeDecorator(_shape);
+        if (_shape != null)
+            _shape = new GreenStrokeDecorator(_shape);
     }
 }

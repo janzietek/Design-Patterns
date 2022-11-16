@@ -10,7 +10,7 @@ public class RectangleShape extends BaseShape {
     }
 
     @Override
-    public Shape draw() {
+    public Shape getShape() {
         return this.shape;
     }
 }

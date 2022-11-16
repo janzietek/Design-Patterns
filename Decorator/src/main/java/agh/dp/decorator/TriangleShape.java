@@ -15,7 +15,7 @@ public class TriangleShape extends BaseShape {
     }
 
     @Override
-    public Shape draw() {
+    public Shape getShape() {
         return this.shape;
     }
 }

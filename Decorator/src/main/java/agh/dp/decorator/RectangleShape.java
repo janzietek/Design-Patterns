@@ -7,6 +7,7 @@ public class RectangleShape extends BaseShape {
     Shape shape;
     public RectangleShape() {
         this.shape = new Rectangle(200, 100, 200, 200);
+        this.shape.setStrokeWidth(20);
     }
 
     @Override

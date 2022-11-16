@@ -48,35 +48,32 @@ public class GUIController extends AnchorPane {
     }
 
     @FXML
-    protected void Red() {
+    protected void FillRed() {
         _shape = new RedFillDecorator(_shape);
-        _shape.getShape();
     }
 
     @FXML
-    protected void Blue() {
+    protected void FillBlue() {
         _shape = new BlueFillDecorator(_shape);
-        _shape.getShape();
     }
 
     @FXML
-    protected void Green() {
+    protected void FillGreen() {
         _shape = new GreenFillDecorator(_shape);
-        _shape.getShape();
     }
 
     @FXML
-    protected void Dotted() {
-        System.out.println("DOTTED");
+    protected void StrokeRed() {
+        _shape = new RedStrokeDecorator(_shape);
     }
 
     @FXML
-    protected void Solid() {
-        System.out.println("SOLID");
+    protected void StrokeBlue() {
+        _shape = new BlueStrokeDecorator(_shape);
     }
 
     @FXML
-    protected void Dashed() {
-        System.out.println("DASHED");
+    protected void StrokeGreen() {
+        _shape = new GreenStrokeDecorator(_shape);
     }
 }

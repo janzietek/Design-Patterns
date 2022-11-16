@@ -12,6 +12,7 @@ public class TriangleShape extends BaseShape {
                 200, 300,
                 400, 300
         );
+        this.shape.setStrokeWidth(20);
     }
 
     @Override

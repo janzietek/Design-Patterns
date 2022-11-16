@@ -18,6 +18,6 @@ public class RedFillDecorator extends BaseDecorator {
 
     @Override
     public void decorate() {
-        this.getShape().setFill(Color.RED);
+        this.getShape().setStroke(Color.RED);
     }
 }

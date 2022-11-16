@@ -3,9 +3,9 @@ package agh.dp.decorator.GUI;
 import agh.dp.decorator.Decorators.Colors.BlueFillDecorator;
 import agh.dp.decorator.Decorators.Colors.GreenFillDecorator;
 import agh.dp.decorator.Decorators.Colors.RedFillDecorator;
-import agh.dp.decorator.Decorators.Strokes.BlueStrokeDecorator;
-import agh.dp.decorator.Decorators.Strokes.GreenStrokeDecorator;
-import agh.dp.decorator.Decorators.Strokes.RedStrokeDecorator;
+import agh.dp.decorator.Decorators.LineStyle.DottedLineDecorator;
+import agh.dp.decorator.Decorators.LineStyle.DashedLineDecorator;
+import agh.dp.decorator.Decorators.LineStyle.SolidLineDecorator;
 import agh.dp.decorator.Shapes.BaseShape;
 import agh.dp.decorator.Shapes.CircleShape;
 import agh.dp.decorator.Shapes.RectangleShape;
@@ -76,20 +76,20 @@ public class GUIController extends AnchorPane {
     }
 
     @FXML
-    protected void StrokeRed() {
+    protected void SolidLine() {
         if (_shape != null)
-            _shape = new RedStrokeDecorator(_shape);
+            _shape = new SolidLineDecorator(_shape);
     }
 
     @FXML
-    protected void StrokeBlue() {
+    protected void DottedLine() {
         if (_shape != null)
-            _shape = new BlueStrokeDecorator(_shape);
+            _shape = new DottedLineDecorator(_shape);
     }
 
     @FXML
-    protected void StrokeGreen() {
+    protected void DashedLine() {
         if (_shape != null)
-            _shape = new GreenStrokeDecorator(_shape);
+            _shape = new DashedLineDecorator(_shape);
     }
 }

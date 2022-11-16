@@ -1,12 +1,11 @@
-package agh.dp.decorator.Decorators.Strokes;
+package agh.dp.decorator.Decorators.LineStyle;
 
 import agh.dp.decorator.Decorators.BaseDecorator;
 import agh.dp.decorator.Shapes.BaseShape;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
-public class RedStrokeDecorator extends BaseDecorator {
-    public RedStrokeDecorator(BaseShape originalShape) {
+public class DashedLineDecorator extends BaseDecorator {
+    public DashedLineDecorator(BaseShape originalShape) {
         this.baseShape = originalShape;
         decorate();
     }
@@ -18,6 +17,7 @@ public class RedStrokeDecorator extends BaseDecorator {
 
     @Override
     public void decorate() {
-        this.getShape().setStroke(Color.RED);
+        this.getShape().getStrokeDashArray().clear();
+        this.getShape().getStrokeDashArray().addAll(25d, 10d);
     }
 }

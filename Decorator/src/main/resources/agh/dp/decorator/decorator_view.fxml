@@ -21,17 +21,17 @@
             <Font size="14.0" />
         </font>
     </Button>
-    <Button fx:id="redStrokeButton" layoutX="500.0" layoutY="100.0" mnemonicParsing="false" onAction="#StrokeRed" prefHeight="40.0" prefWidth="80.0" text="RED" textFill="#fc0000">
+    <Button fx:id="solidLineButton" layoutX="500.0" layoutY="100.0" mnemonicParsing="false" onAction="#SolidLine" prefHeight="40.0" prefWidth="80.0" text="SOLID">
         <font>
             <Font size="14.0" />
         </font>
     </Button>
-    <Button fx:id="greenStrokeButton" layoutX="500.0" layoutY="170.0" mnemonicParsing="false" onAction="#StrokeGreen" prefHeight="40.0" prefWidth="80.0" text="GREEN" textFill="LIME">
+    <Button fx:id="dashedLineButton" layoutX="500.0" layoutY="170.0" mnemonicParsing="false" onAction="#DashedLine" prefHeight="40.0" prefWidth="80.0" text="DASHED">
         <font>
             <Font size="14.0" />
         </font>
     </Button>
-    <Button fx:id="blueStrokeButton" layoutX="500.0" layoutY="240.0" mnemonicParsing="false" onAction="#StrokeBlue" prefHeight="40.0" prefWidth="80.0" text="BLUE" textFill="#001dff">
+    <Button fx:id="dottedLineButton" layoutX="500.0" layoutY="240.0" mnemonicParsing="false" onAction="#DottedLine" prefHeight="40.0" prefWidth="80.0" text="DOTTED">
         <font>
             <Font size="14.0" />
         </font>
@@ -51,12 +51,12 @@
             <Font size="14.0" />
         </font>
     </Button>
-   <Text layoutX="29.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filling">
+   <Text layoutX="29.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Color">
       <font>
          <Font size="24.0" />
       </font>
    </Text>
-   <Text layoutX="506.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stroke">
+   <Text layoutX="490.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line Style">
       <font>
          <Font size="24.0" />
       </font>

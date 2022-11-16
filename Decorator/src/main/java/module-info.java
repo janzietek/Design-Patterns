@@ -13,6 +13,6 @@ module agh.dp.decorator {
     opens agh.dp.decorator.Decorators to javafx.fxml;
     exports agh.dp.decorator.Decorators.Colors;
     opens agh.dp.decorator.Decorators.Colors to javafx.fxml;
-    exports agh.dp.decorator.Decorators.Strokes;
-    opens agh.dp.decorator.Decorators.Strokes to javafx.fxml;
+    exports agh.dp.decorator.Decorators.LineStyle;
+    opens agh.dp.decorator.Decorators.LineStyle to javafx.fxml;
 }

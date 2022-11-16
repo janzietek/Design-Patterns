@@ -18,6 +18,6 @@ public class GreenFillDecorator extends BaseDecorator {
 
     @Override
     public void decorate() {
-        this.getShape().setFill(Color.GREEN);
+        this.getShape().setStroke(Color.GREEN);
     }
 }

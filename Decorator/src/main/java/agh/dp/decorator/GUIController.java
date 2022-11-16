@@ -7,6 +7,8 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
 public class GUIController extends AnchorPane {
+    private BaseShape _shape;
+
     public GUIController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
                 "decorator_view.fxml"));
@@ -22,32 +24,38 @@ public class GUIController extends AnchorPane {
 
     @FXML
     protected void Circle() {
-        System.out.println("CIRCLE");
+        _shape = new CircleShape();
+        this.getChildren().add(_shape.draw());
     }
 
     @FXML
     protected void Rectangle() {
-        System.out.println("RECTANGLE");
+        _shape = new RectangleShape();
+        this.getChildren().add(_shape.draw());
     }
 
     @FXML
     protected void Triangle() {
-        System.out.println("TRIANGLE");
+        _shape = new TriangleShape();
+        this.getChildren().add(_shape.draw());
     }
 
     @FXML
     protected void Red() {
-        System.out.println("RED");
+        _shape = new RedFillDecorator(_shape);
+        _shape.draw();
     }
 
     @FXML
     protected void Blue() {
-        System.out.println("BLUE");
+        _shape = new BlueFillDecorator(_shape);
+        _shape.draw();
     }
 
     @FXML
     protected void Green() {
-        System.out.println("GREEN");
+        _shape = new GreenFillDecorator(_shape);
+        _shape.draw();
     }
 
     @FXML

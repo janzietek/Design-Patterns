@@ -13,8 +13,6 @@ public class Program extends Application {
 
         stage.setScene(new Scene(customControl));
         stage.setTitle("Decorate!");
-        stage.setWidth(600);
-        stage.setHeight(400);
         stage.show();
     }
 

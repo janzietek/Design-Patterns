@@ -24,18 +24,25 @@ public class GUIController extends AnchorPane {
 
     @FXML
     protected void Circle() {
+        if (_shape != null)
+            this.getChildren().remove(_shape.draw());
+
         _shape = new CircleShape();
         this.getChildren().add(_shape.draw());
     }
 
     @FXML
     protected void Rectangle() {
+        if (_shape != null)
+            this.getChildren().remove(_shape.draw());
         _shape = new RectangleShape();
         this.getChildren().add(_shape.draw());
     }
 
     @FXML
     protected void Triangle() {
+        if (_shape != null)
+            this.getChildren().remove(_shape.draw());
         _shape = new TriangleShape();
         this.getChildren().add(_shape.draw());
     }

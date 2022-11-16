@@ -5,12 +5,12 @@ import javafx.scene.shape.Shape;
 
 public class GreenFillDecorator extends BaseDecorator{
     public GreenFillDecorator(BaseShape originalShape) {
-        this.shape = originalShape.shape;
+        this.baseShape = originalShape;
     }
 
     @Override
     public Shape draw() {
-        this.shape.setFill(Color.GREEN);
-        return this.shape;
+        super.baseShape.draw().setFill(Color.GREEN);
+        return super.baseShape.draw();
     }
 }

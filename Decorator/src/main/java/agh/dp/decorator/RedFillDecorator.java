@@ -5,12 +5,12 @@ import javafx.scene.shape.Shape;
 
 public class RedFillDecorator extends BaseDecorator {
     public RedFillDecorator(BaseShape originalShape) {
-        this.shape = originalShape.shape;
+        this.baseShape = originalShape;
     }
 
     @Override
     public Shape draw() {
-        this.shape.setFill(Color.RED);
-        return this.shape;
+        super.baseShape.draw().setFill(Color.RED);
+        return super.baseShape.draw();
     }
 }

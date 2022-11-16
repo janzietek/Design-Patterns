@@ -4,7 +4,7 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
-public class TriangleShape extends BaseShape {
+public class TriangleShape implements BaseShape {
     Shape shape;
     public TriangleShape() {
         this.shape = new Polygon(

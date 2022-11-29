@@ -10,70 +10,39 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Peer implements IFacade {
-    public static void main(String[] args) {
-        boolean wait = true;
-        Peer peer = new Peer();
-        while (wait) {
-            try {
-                peer.handleInput();
-                wait = false;
-            } catch (IOException e) {
-                System.out.println("Invalid entry");
-            }
-        }
-    }
+    private ServerThread server = null;
 
-    private void handleInput() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("> Enter your <nick> and <port>");
-        String[] values = reader.readLine().split(" ");
-        ServerThread server = new ServerThread(values[1]);
-        server.start();
-        //new Peer().addListeners(reader, values[0], server);
-    }
-
-    private void addListeners (BufferedReader bufferedReader, String nick, ServerThread serverThread) throws IOException {
-        System.out.println("> Enter computername:port peers to exchange messages from, s:kip");
-        String input = bufferedReader.readLine();
-
-        String[] values = input.split(" ");
-        if (!input.equals("s")) {
-            for (String peer : values) {
-                String[] address = input.split(":");
-                Socket socket = null;
-                try {
-                    if (!validatePeer(peer)) {
-                        socket = new Socket(InetAddress.getByName(address[0]), Integer.parseInt(address[1]));
-                        PeerThread peerThread = new PeerThread(socket);
-                        peerThread.start();
-                    }
-                } catch (Exception e) {
-                    if (socket != null) socket.close();
-                    else System.out.println("Invalid input");
-                }
-            }
-        }
-        //StartChat(bufferedReader, nick, serverThread);
-    }
-
-    private void StartChat(BufferedReader bufferedReader, String nick, ServerThread serverThread) {
+    @Override
+    public void init(String[] values) {
+//        ServerThread server = null;
         try {
-            System.out.println("> You can now communicate, a:dd listener, l:ist connections, e:xit");
-            boolean flag = true;
-            while (flag) {
-                String command = bufferedReader.readLine();
-                switch (command) {
-                    case "a" -> addListeners(bufferedReader, nick, serverThread);
-                    case "l" -> list();
-                    case "e" -> flag = false;
-                    default -> serverThread.SendMessage(command);
-                }
-            }
+            server = new ServerThread(values[1]);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Invalid entry");
         }
-        System.exit(0);
+        server.start();
     }
+
+    @Override
+    public void addListeners (String[] listeners) throws IOException {
+
+        for (String listener : listeners) {
+            String[] address = listener.split(":");
+            Socket socket = null;
+            try {
+                if (!validatePeer(listener)) {
+                    socket = new Socket(InetAddress.getByName(address[0]), Integer.parseInt(address[1]));
+                    PeerThread peerThread = new PeerThread(socket);
+                    peerThread.start();
+                }
+            } catch (Exception e) {
+                if (socket != null) socket.close();
+                else System.out.println("Invalid input");
+            }
+        }
+
+    }
+
 
     private boolean validatePeer(String input) {
         boolean flag = false;
@@ -93,7 +62,8 @@ public class Peer implements IFacade {
         return flag;
     }
 
-    private void list() {
+    @Override
+    public void connectionsList() {
         Thread[] threads = new Thread[Thread.currentThread().getThreadGroup().activeCount()];
         Thread.currentThread().getThreadGroup().enumerate(threads);
         ArrayList<PeerThread> peerThreads = new ArrayList<>();
@@ -123,5 +93,10 @@ public class Peer implements IFacade {
         else {
             System.out.println("No other peer listens to messages from this peer");
         }
+    }
+
+    @Override
+    public void sendBroadcastMessage(String message){
+        server.SendMessage(message);
     }
 }

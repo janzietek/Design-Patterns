@@ -1,4 +1,4 @@
-package agh.dp.dec;
+package agh.dp.dec.networking;
 
 import java.io.IOException;
 import java.net.InetAddress;

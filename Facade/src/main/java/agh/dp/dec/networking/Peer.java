@@ -1,4 +1,6 @@
-package agh.dp.dec;
+package agh.dp.dec.networking;
+
+import agh.dp.dec.IFacade;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,9 +8,8 @@ import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Locale;
 
-public class Peer {
+public class Peer implements IFacade {
     public static void main(String[] args) {
         boolean wait = true;
         Peer peer = new Peer();
@@ -28,12 +29,13 @@ public class Peer {
         String[] values = reader.readLine().split(" ");
         ServerThread server = new ServerThread(values[1]);
         server.start();
-        new Peer().addListeners(reader, values[0], server);
+        //new Peer().addListeners(reader, values[0], server);
     }
 
     private void addListeners (BufferedReader bufferedReader, String nick, ServerThread serverThread) throws IOException {
         System.out.println("> Enter computername:port peers to exchange messages from, s:kip");
         String input = bufferedReader.readLine();
+
         String[] values = input.split(" ");
         if (!input.equals("s")) {
             for (String peer : values) {
@@ -51,7 +53,7 @@ public class Peer {
                 }
             }
         }
-        StartChat(bufferedReader, nick, serverThread);
+        //StartChat(bufferedReader, nick, serverThread);
     }
 
     private void StartChat(BufferedReader bufferedReader, String nick, ServerThread serverThread) {
@@ -86,7 +88,6 @@ public class Peer {
             else if  (thread instanceof ServerThread && !peers.contains(((ServerThread)thread).toString())) {
                 peers.add(((ServerThread)thread).toString());
             }
-
         }
         if (peers.contains(input)) flag = true;
         return flag;

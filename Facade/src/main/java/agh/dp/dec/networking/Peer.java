@@ -10,12 +10,14 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Peer implements IFacade {
+    private String name;
     private ServerThread server = null;
 
     @Override
     public void init(String[] values) {
 //        ServerThread server = null;
         try {
+            name = values[0];
             server = new ServerThread(values[1]);
         } catch (IOException e) {
             System.out.println("Invalid entry");
@@ -24,14 +26,14 @@ public class Peer implements IFacade {
     }
 
     @Override
-    public void addListeners (String[] listeners) throws IOException {
+    public void addNodes (String[] nodes) throws IOException {
 
-        for (String listener : listeners) {
-            String[] address = listener.split(":");
+        for (String node : nodes) {
+//            String[] address = listener.split(":");
             Socket socket = null;
             try {
-                if (!validatePeer(listener)) {
-                    socket = new Socket(InetAddress.getByName(address[0]), Integer.parseInt(address[1]));
+                if (!validatePeer(node)) {
+                    socket = new Socket(InetAddress.getByName("localhost"), Integer.parseInt(node));
                     PeerThread peerThread = new PeerThread(socket);
                     peerThread.start();
                 }
@@ -52,7 +54,7 @@ public class Peer implements IFacade {
 
         for (Thread thread : threads) {
             if (thread instanceof PeerThread && !peers.contains(((PeerThread)thread).toString())) {
-                peers.add(((PeerThread)thread).getHostAddress() + ":" + ((PeerThread)thread).getPort());
+                peers.add(((PeerThread)thread).toString());
             }
             else if  (thread instanceof ServerThread && !peers.contains(((ServerThread)thread).toString())) {
                 peers.add(((ServerThread)thread).toString());
@@ -97,6 +99,6 @@ public class Peer implements IFacade {
 
     @Override
     public void sendBroadcastMessage(String message){
-        server.SendMessage(message);
+        server.SendMessage(name + ": " + message);
     }
 }

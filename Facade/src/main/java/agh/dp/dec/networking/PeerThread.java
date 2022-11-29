@@ -44,6 +44,6 @@ public class PeerThread extends Thread {
 
     @Override
     public String toString() {
-        return this.localHostAddress + ":" + this.localPort;
+        return "" + this.localPort;
     }
 }

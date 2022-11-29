@@ -22,19 +22,19 @@ public class CmdChat {
         boolean menu = true;
         while (flag) {
             if (menu) {
-                System.out.println("> You can now communicate, a:dd listener, l:ist connections, e:xit");
+                System.out.println("> You can now communicate, a:dd nodes, l:ist connections, e:xit");
                 menu = false;
             }
             String command = reader.readLine();
             if (!command.equals(""))menu = true;
             switch (command) {
                 case "a" -> {
-                    System.out.println("> Enter computername:port peers to listen messages from, s:kip");
+                    System.out.println("> Enter ports of peers to listen messages from, s:kip");
                     String input = reader.readLine();
-                    String[] listeners = input.split(" ");
+                    String[] nodes = input.split(" ");
 
                     if (!input.equals("s")) {
-                        networking.addListeners(listeners);
+                        networking.addNodes(nodes);
                     }
                 }
                 case "l" -> networking.connectionsList();

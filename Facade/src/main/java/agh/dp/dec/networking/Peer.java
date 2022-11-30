@@ -5,6 +5,7 @@ import agh.dp.dec.IFacade;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -23,6 +24,16 @@ public class Peer implements IFacade {
             System.out.println("Invalid entry");
         }
         server.start();
+    }
+
+    public boolean isAddressAvailable(int port) throws IllegalStateException {
+        try (Socket ignored = new Socket("localhost", port)) {
+            return false;
+        } catch (ConnectException e) {
+            return true;
+        } catch (IOException e) {
+            throw new IllegalStateException("Error while trying to check open port", e);
+        }
     }
 
     @Override

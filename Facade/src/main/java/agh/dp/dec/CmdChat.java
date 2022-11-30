@@ -14,9 +14,17 @@ public class CmdChat {
         IFacade networking = new Peer();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("> Enter your <nick> and <port>");
-        String[] values = reader.readLine().split(" ");
-        networking.init(values);
+        while (true) {
+            System.out.println("> Enter your <nick> and <port>");
+            String[] values = reader.readLine().split(" ");
+            if (networking.isAddressAvailable(Integer.parseInt(values[1]))) {
+                networking.init(values);
+                break;
+            }
+            else {
+                System.out.println("> Port unavailable");
+            }
+        }
 
         boolean flag = true;
         boolean menu = true;

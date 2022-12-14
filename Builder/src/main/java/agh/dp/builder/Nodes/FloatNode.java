@@ -1,6 +1,6 @@
-package agh.dp.builder;
+package agh.dp.builder.Nodes;
 
-public class FloatNode {
+public class FloatNode implements IJSONNode {
     private float value;
 
     public FloatNode(float value) {

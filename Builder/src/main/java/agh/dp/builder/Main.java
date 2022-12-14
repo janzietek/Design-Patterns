@@ -1,5 +1,7 @@
 package agh.dp.builder;
 
+import agh.dp.builder.Nodes.JSONObject;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -22,10 +24,8 @@ public class Main {
             return;
         }
 
-        System.out.println(jsonRaw);
         Manager manager = new Manager(jsonRaw);
         JSONObject object = manager.createObjectBuilder().build();
-
-//        System.out.println(object.toString());
+        System.out.println(object.toString());
     }
 }

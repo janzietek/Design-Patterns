@@ -1,42 +1,58 @@
 package agh.dp.builder;
 
-import java.util.ArrayList;
+
+import agh.dp.builder.Nodes.FloatNode;
+import agh.dp.builder.Nodes.IntNode;
+import agh.dp.builder.Nodes.StringNode;
 
 public class Manager {
-    private final String json;
-    private int index;
+    private final String jsonRaw;
 
     public Manager(String json) {
-        this.json = json.replaceAll("\\s", "");
+        this.jsonRaw = json.replaceAll("\\s", "");
     }
 
     public Builder createObjectBuilder() {
+        return createObjectBuilderDeep(this.jsonRaw, 0);
+    }
+
+    private Builder createObjectBuilderDeep(String json, int depth) {
         Builder builder = new Builder();
-        System.out.println(this.json);
 
-        index = 1;
-        while ( index < json.length()){
-            if (json.charAt(index) == '"'){
-                System.out.println(extractWord());
+        int index = 1;
+        while (index < json.length()) {
+            int[] lineRange = getLineRange(json, index);
+            index = lineRange[1];
+            String line = json.substring(lineRange[0], lineRange[1]);
+            String[] keyAndValue;
+            keyAndValue = line.split(":", 2);
+
+            if (line.contains("{")) {
+                builder.add(keyAndValue[0], this.createObjectBuilderDeep(keyAndValue[1], depth + 1).build(), depth);
             }
-            index ++;
+            else if (line.contains("\"")) {
+                builder.add(keyAndValue[0], new StringNode(keyAndValue[1]), depth);
+
+            } else if (line.contains(".")) {
+                builder.add(keyAndValue[0], new FloatNode(Float.parseFloat(keyAndValue[1])), depth);
+            } else {
+                builder.add(keyAndValue[0], new IntNode(Integer.parseInt(keyAndValue[1])), depth);
+            }
+            index++;
         }
-        
         return builder;
-//        return null;
     }
 
-    private String extractWord(){
+    private int[] getLineRange(String json, int index) {
         int startIndex = index;
-        index ++;
-        while (json.charAt(index) != '"'){
-            index ++;
+        while (json.charAt(index) != ',' && index < json.length() - 1) {
+            if (json.charAt(index) == '{') {
+                while (json.charAt(index) != '}') {
+                    index++;
+                }
+            }
+            index++;
         }
-        return json.substring(startIndex, index + 1);
-    }
-
-    private ArrayList<String> extractMapElement(){
-        extractWord();
-        return null;
+        return new int[]{startIndex, index};
     }
 }

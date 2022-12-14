@@ -1,4 +1,4 @@
-package agh.dp.builder;
+package agh.dp.builder.Nodes;
 
 public interface IJSONNode {
 }

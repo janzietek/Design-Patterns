@@ -1,6 +1,6 @@
-package agh.dp.builder;
+package agh.dp.builder.Nodes;
 
-public class StringNode {
+public class StringNode implements IJSONNode {
     private String value;
 
     public StringNode(String value) {

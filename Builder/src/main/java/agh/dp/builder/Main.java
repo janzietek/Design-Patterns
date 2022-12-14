@@ -15,15 +15,17 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        String jsonRaw = getJsonContent("probe1.json");
+        // insert path
+        String jsonRaw = getJsonContent("src/main/resources/probe1.json");
         if (!isValid(jsonRaw)) {
             System.out.println("Provided json file is invalid");
             return;
         }
 
+        System.out.println(jsonRaw);
         Manager manager = new Manager(jsonRaw);
         JSONObject object = manager.createObjectBuilder().build();
 
-        System.out.println(object.toString());
+//        System.out.println(object.toString());
     }
 }

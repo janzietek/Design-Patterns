@@ -44,9 +44,18 @@ public class Manager {
     }
 
     private int[] getLineRange(String json, int index) {
+        int nestingCounter = 0;
         int startIndex = index;
         while (json.charAt(index) != ',' && index < json.length() - 1) {
             if (json.charAt(index) == '{') {
+                nestingCounter++;
+                while (nestingCounter > 0) {
+                    index++;
+                    if (json.charAt(index) == '{')
+                        nestingCounter++;
+                    else if (json.charAt(index) == '}')
+                        nestingCounter--;
+                }
                 while (json.charAt(index) != '}') {
                     index++;
                 }

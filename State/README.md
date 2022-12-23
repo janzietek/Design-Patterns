@@ -9,4 +9,4 @@ G = <	{ a, b, c },
   Start >
 
 Graph representation:
-<!-- ![My Image](images/graph.jpg) -->
+![My Image](images/graph.jpg)

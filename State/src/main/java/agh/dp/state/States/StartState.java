@@ -18,11 +18,19 @@ public class StartState implements IState{
                 this.Fsm.changeState(nextState);
             }
             case 'b' -> {
-                nextState = new BState(Fsm);
+                nextState = new CState(Fsm);
                 this.Fsm.changeState(nextState);
             }
             case 'c' -> {
-                nextState = new CState(Fsm);
+                nextState = new RejectState(Fsm);
+                this.Fsm.changeState(nextState);
+            }
+            case Character.MIN_VALUE -> {
+                nextState = new RejectState(Fsm);
+                this.Fsm.changeState(nextState);
+            }
+            default -> {
+                nextState = new RejectState(Fsm);
                 this.Fsm.changeState(nextState);
             }
         }

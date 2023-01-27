@@ -2,7 +2,7 @@ package agh.dp.state.States;
 
 import agh.dp.state.FiniteStateMachine;
 
-public class AcceptState implements IState{
+public class AcceptState implements IState {
     private final FiniteStateMachine Fsm;
 
     public AcceptState(FiniteStateMachine fsm) {
@@ -11,6 +11,15 @@ public class AcceptState implements IState{
 
     @Override
     public void GetNext(char letter) {
-        Fsm.changeState(new RejectState(this.Fsm));
+        IState nextState;
+        switch (letter) {
+            case Character.MIN_VALUE -> {
+                this.Fsm.changeState(this);
+            }
+            default -> {
+                nextState = new RejectState(Fsm);
+                this.Fsm.changeState(nextState);
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@ public class Main {
         FiniteStateMachine FSM = new FiniteStateMachine();
         IState start = new StartState(FSM);
         FSM.setInitialState(start);
-        boolean result = FSM.checkWord("abaaaa");
+        boolean result = FSM.checkWord("aba");
 
         System.out.println(result);
     }

@@ -1,4 +1,4 @@
-package agh.edu.dp;
+package agh.edu.dp.visitor;
 
 public interface IVisitor {
 }

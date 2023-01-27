@@ -1,2 +1,4 @@
-package agh.edu.dp;public class CalculationGraph {
+package agh.edu.dp;
+
+public class CalculationGraph {
 }

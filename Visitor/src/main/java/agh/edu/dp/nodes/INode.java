@@ -1,2 +1,4 @@
-package agh.edu.dp.nodes;public interface INode {
+package agh.edu.dp.nodes;
+
+public interface INode {
 }

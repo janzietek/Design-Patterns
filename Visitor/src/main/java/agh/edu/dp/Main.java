@@ -1,2 +1,4 @@
-package agh.edu.dp;public class Main {
+package agh.edu.dp;
+
+public class Main {
 }

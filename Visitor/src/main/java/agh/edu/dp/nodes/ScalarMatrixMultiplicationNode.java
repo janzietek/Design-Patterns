@@ -1,8 +1,7 @@
 package agh.edu.dp.nodes;
 
-import agh.edu.dp.IVisitor;
+import agh.edu.dp.Visitor;
 import agh.edu.dp.MatrixNode;
-import agh.edu.dp.helpers.MatrixHelper;
 
 public class ScalarMatrixMultiplicationNode extends MatrixOperationNode {
     protected double scalar;
@@ -13,7 +12,7 @@ public class ScalarMatrixMultiplicationNode extends MatrixOperationNode {
     }
 
     @Override
-    public void accept(IVisitor visitor) throws Exception {
+    public void accept(Visitor visitor) throws Exception {
         visitor.visit(this);
     }
 }

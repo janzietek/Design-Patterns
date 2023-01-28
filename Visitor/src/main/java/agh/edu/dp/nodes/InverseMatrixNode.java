@@ -1,6 +1,6 @@
 package agh.edu.dp.nodes;
 
-import agh.edu.dp.IVisitor;
+import agh.edu.dp.Visitor;
 import agh.edu.dp.MatrixNode;
 
 public class InverseMatrixNode extends MatrixOperationNode {
@@ -9,7 +9,7 @@ public class InverseMatrixNode extends MatrixOperationNode {
     }
 
     @Override
-    public void accept(IVisitor visitor) throws Exception {
+    public void accept(Visitor visitor) throws Exception {
         visitor.visit(this);
     }
 }

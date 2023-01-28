@@ -1,8 +1,7 @@
 package agh.edu.dp.nodes;
 
 import agh.edu.dp.MatrixNode;
-import agh.edu.dp.Node;
-import agh.edu.dp.IVisitor;
+import agh.edu.dp.Visitor;
 import agh.edu.dp.helpers.MatrixHelper;
 
 public class AddMatricesNode extends MatrixOperationNode {
@@ -14,8 +13,8 @@ public class AddMatricesNode extends MatrixOperationNode {
     }
 
     @Override
-    public void accept(IVisitor visitor) throws Exception {
-        if (MatrixHelper.verifyMatricesSizeForAdding(this.operationElement.getMatrix(), this.operationElement2.getMatrix()))
+    public void accept(Visitor visitor) throws Exception {
+        if (MatrixHelper.VerifyMatricesSizeForAdding(this.operationElement.getMatrix(), this.operationElement2.getMatrix()))
             visitor.visit(this);
         else
             throw new Exception("Wrong matrices sizes");

@@ -26,7 +26,7 @@ public class MatrixNode extends Node {
     }
 
     @Override
-    public void accept(IVisitor visitor) throws Exception {
+    public void accept(Visitor visitor) throws Exception {
         visitor.visit(this);
     }
 }

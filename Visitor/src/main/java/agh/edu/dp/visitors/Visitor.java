@@ -1,5 +1,6 @@
-package agh.edu.dp;
+package agh.edu.dp.visitors;
 
+import agh.edu.dp.nodes.MatrixNode;
 import agh.edu.dp.nodes.*;
 
 public interface Visitor {

@@ -1,7 +1,7 @@
 package agh.edu.dp.nodes;
 
-import agh.edu.dp.Visitor;
-import agh.edu.dp.MatrixNode;
+import agh.edu.dp.helpers.MatrixHelper;
+import agh.edu.dp.visitors.Visitor;
 
 public class InverseMatrixNode extends MatrixOperationNode {
     public InverseMatrixNode(MatrixNode element, String name) {
@@ -10,6 +10,13 @@ public class InverseMatrixNode extends MatrixOperationNode {
 
     @Override
     public void accept(Visitor visitor) throws Exception {
-        visitor.visit(this);
+        if (MatrixHelper.VerifyMatrixIsSquareForInversion(this.operationElement.getMatrix())){
+            if (MatrixHelper.VerifyNonZeroDeterminantForInversion(this.operationElement.getMatrix()))
+                visitor.visit(this);
+            else
+                throw new Exception("Determinant equals zero");
+        }
+        else
+            throw new Exception("Matrix is not square");
     }
 }

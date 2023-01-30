@@ -1,6 +1,7 @@
 package agh.edu.dp;
 
 import agh.edu.dp.nodes.*;
+import agh.edu.dp.visitors.Visitor;
 
 import java.util.LinkedList;
 import java.util.List;
